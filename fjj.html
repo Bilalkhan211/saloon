@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamorous Salon & Spa</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        /* CSS Variables - Beige Theme */
+        :root {
+            --clr-bg-main: #FAFAFA;
+            /* Off white */
+            --clr-bg-sec: #F5EFEB;
+            /* Soft beige */
+            --clr-accent: #C2A892;
+            /* Warm tan */
+            --clr-accent-dark: #A38671;
+            /* Mocha */
+            --clr-text-main: #332C27;
+            /* Dark brown */
+            --clr-text-light: #665D56;
+            /* Lighter brown */
+
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--clr-bg-main);
+            color: var(--clr-text-main);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(250, 250, 250, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(194, 168, 146, 0.2);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--clr-accent-dark);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--clr-text-light);
+            transition: var(--transition);
+        }
+
+        .nav-links li a:hover {
+            color: var(--clr-accent-dark);
+        }
+
+        .book-btn {
+            background-color: var(--clr-accent);
+            color: #fff;
+            padding: 0.6rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        .book-btn:hover {
+            background-color: var(--clr-accent-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--clr-text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background-color: var(--clr-bg-sec);
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--clr-text-main);
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--clr-accent-dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--clr-text-light);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40%;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-bottom-left-radius: 40px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background-color: var(--clr-bg-main);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--clr-text-main);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--clr-text-light);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--clr-bg-sec);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--clr-accent);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--clr-accent-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--clr-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--clr-accent-dark);
+            font-size: 1.2rem;
+        }
+
+        /* Booking Section */
+        .booking {
+            padding: 6rem 0;
+            background-color: var(--clr-bg-sec);
+        }
+
+        .booking-container {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .booking-text {
+            flex: 1;
+        }
+
+        .booking-form {
+            flex: 1;
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #EBEBEB;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            background-color: #FAFAFA;
+            color: var(--clr-text-main);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--clr-accent);
+            background-color: #fff;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--clr-text-main);
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--clr-accent-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--clr-text-main);
+            color: #fff;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--clr-accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: #A09D9A;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--clr-accent);
+        }
+
+        .copyright {
+            color: #7A7672;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .booking-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--clr-bg-main);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                padding-top: 100px;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-image {
+                position: relative;
+                width: 100%;
+                height: 40vh;
+                border-bottom-left-radius: 0;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal h3 {
+            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+            color: var(--clr-text-main);
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+        }
+
+        .modal button {
+            background: var(--clr-accent-dark);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+        }
+
+        .modal button:hover {
+            background: var(--clr-text-main);
+        }
+
+        .modal-close {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--clr-text-light);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Workers Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            max-width: 100%;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.05);
+            z-index: 1500;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .sidebar.open {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .close-sidebar {
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .worker-card {
+            background: var(--clr-bg-sec);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .worker-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--clr-text-main);
+        }
+
+        .worker-card p {
+            font-size: 0.9rem;
+            color: var(--clr-text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .attendance-form {
+            margin-top: 2rem;
+            background: #FAFAFA;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .attendance-form input,
+        .attendance-form select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+        }
+
+        .attendance-form button {
+            background: var(--clr-text-main);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .attendance-form button:hover {
+            background: var(--clr-accent-dark);
+        }
+
+        /* Deals Sidebar */
+        .deals-sidebar {
+            position: fixed;
+            top: 0;
+            right: -480px;
+            width: 460px;
+            max-width: 100%;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1600;
+            transition: right 0.35s ease;
+            overflow-y: auto;
+            padding: 0;
+        }
+
+        .deals-sidebar.open {
+            right: 0;
+        }
+
+        .deals-sidebar-header {
+            background: linear-gradient(135deg, #C2A892, #A38671);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .deals-sidebar-header h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .close-deals-sidebar {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .deals-body {
+            padding: 1.5rem;
+        }
+
+        .price-section {
+            margin-bottom: 1.8rem;
+        }
+
+        .price-section-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #C2A892;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px dotted #EBEBEB;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.45rem 0;
+            font-size: 0.9rem;
+            color: var(--clr-text-main);
+            border-bottom: 1px dotted #F0EAE4;
+        }
+
+        .price-row span:last-child {
+            font-weight: 700;
+            color: var(--clr-accent-dark);
+        }
+
+        .deals-btn {
+            width: 100%;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, #C2A892, #A38671);
+            color: #fff;
+            border: none;
+            padding: 0.9rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .deals-btn:hover {
+            opacity: 0.85;
+        }
+    </style>
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Site Login Overlay -->
+    <div id="site-login-overlay"
+        style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--clr-bg-sec); z-index: 9999; display: flex; justify-content: center; align-items: center; background-image: linear-gradient(135deg, #FAFAFA 0%, #F5EFEB 100%); transition: opacity 0.5s ease;">
+        <div
+            style="background: #fff; padding: 3rem 4rem; border-radius: 12px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); text-align: center; width: 100%; max-width: 400px;">
+            <div
+                style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 600; color: var(--clr-accent-dark); margin-bottom: 0.5rem; letter-spacing: 2px;">
+                Glamorous.</div>
+            <div style="font-size: 0.95rem; color: var(--clr-text-light); margin-bottom: 2.5rem; font-style: italic;">
+                Salon Website Access</div>
+
+            <div style="margin-bottom: 1.5rem; text-align: left;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-text-light);">Username</label>
+                <input type="text" id="site-username" placeholder="Enter username"
+                    style="width: 100%; padding: 1rem; border: 1px solid #EBEBEB; border-radius: 6px; font-family: var(--font-body); font-size: 1rem; background-color: #FAFAFA;">
+            </div>
+            <div style="margin-bottom: 1.5rem; text-align: left;">
+                <label
+                    style="display: block; margin-bottom: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--clr-text-light);">Password</label>
+                <input type="password" id="site-password" placeholder="Enter password"
+                    style="width: 100%; padding: 1rem; border: 1px solid #EBEBEB; border-radius: 6px; font-family: var(--font-body); font-size: 1rem; background-color: #FAFAFA;">
+            </div>
+
+            <button id="site-login-btn"
+                style="width: 100%; background-color: var(--clr-accent-dark); color: #fff; padding: 1rem; border: none; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; border-radius: 6px; font-weight: 700; transition: all 0.3s ease;">Enter
+                Site</button>
+            <div id="site-login-error" style="color: #d9534f; font-size: 0.85rem; margin-top: 1rem; display: none;">
+                Invalid username or password. Please try again.</div>
+        </div>
+    </div>
+
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Glamorous.</a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#book">Book</a></li>
+                <li><a href="#deals">Deals</a></li>
+                <li id="workers-nav-item"><a href="#" id="workers-btn">Workers</a></li>
+            </ul>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="#" id="profile-btn"
+                    style="background-color: #5C3317; color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: background-color 0.3s ease;"><i
+                        class="fas fa-user" style="margin-right: 5px;"></i> My Profile</a>
+                <a href="admin.html" id="admin-nav-btn"
+                    style="background: linear-gradient(135deg, #A38671, #332C27); color: white; padding: 0.6rem 1.2rem; border-radius: 4px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; display: flex; align-items: center; gap: 6px;"
+                    onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'"><i
+                        class="fas fa-shield-halved"></i> Admin</a>
+                <a href="#book"><button class="book-btn">Book Now</button></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container" style="display: flex; height: 100%; position: relative;">
+            <div class="hero-content" style="align-self: center;">
+                <h1>Discover your <span>inner glow</span></h1>
+                <p>Experience luxury beauty services in a calming, sophisticated environment tailored to help you relax
+                    and feel your absolute best.</p>
+                <a href="#services"><button class="book-btn" style="padding: 1rem 2rem; font-size: 1rem;">Our
+                        Services</button></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="model.png" alt="Model holding a blush brush">
+        </div>
+    </section>
+
+    <!-- Deals Section -->
+    <section id="deals" class="deals" style="padding: 6rem 0; background-color: #fff; text-align: center;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 3rem;">
+                <h2>Price List & Deals</h2>
+                <p>Explore our comprehensive list of services and special offers.</p>
+            </div>
+            <!-- Please save your image as price_list.png in the same folder -->
+            <img src="price_list.png" alt="Beauty Salon Price List"
+                style="max-width: 100%; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); margin: 0 auto; display: block;">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Services</h2>
+                <p>We offer a wide range of beauty and relaxation treatments using top-tier products to guarantee
+                    exceptional results.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <i class="fas fa-cut service-icon"></i>
+                    <h3>Hair Styling</h3>
+                    <p>Precision cuts, expert styling, and nourishing treatments tailored to your unique hair type.</p>
+                    <span class="service-price">From $45</span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <i class="fas fa-spa service-icon"></i>
+                    <h3>Skin Care</h3>
+                    <p>Rejuvenating facials and skin treatments designed to bring out your natural, radiant glow.</p>
+                    <span class="service-price">From $65</span>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <i class="fas fa-hands service-icon"></i>
+                    <h3>Nail Care</h3>
+                    <p>Luxury manicures and pedicures featuring gel options and intricate nail art.</p>
+                    <span class="service-price">From $35</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="book" class="booking">
+        <div class="container booking-container">
+            <div class="booking-text">
+                <h2>Ready for a change?</h2>
+                <h2 style="font-style: italic; color: var(--clr-accent-dark); margin-bottom: 1.5rem;">Book your
+                    appointment.</h2>
+                <p style="color: var(--clr-text-light); margin-bottom: 2rem;">Secure your spot at Glamorous today. Fill
+                    out the form, and our reception team will contact you to confirm your desired time.</p>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="font-family: var(--font-body); font-weight: 700; margin-bottom: 0.5rem;">Opening Hours
+                    </h4>
+                    <p style="color: var(--clr-text-light); font-size: 0.9rem;">Mon - Fri: 9:00 AM - 8:00 PM</p>
+                    <p style="color: var(--clr-text-light); font-size: 0.9rem;">Saturday: 10:00 AM - 6:00 PM</p>
+                    <p style="color: var(--clr-text-light); font-size: 0.9rem;">Sunday: Closed</p>
+                </div>
+            </div>
+
+            <div class="booking-form">
+                <form id="appointment-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="service" required>
+                            <option value="" disabled selected>Select a Service</option>
+                            <option value="hair">Hair Styling</option>
+                            <option value="skin">Skin Care</option>
+                            <option value="nails">Nail Care</option>
+                            <option value="other">Other / Consultation</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="date" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Request Appointment</button>
+                    <p id="form-message"
+                        style="margin-top: 1rem; text-align: center; font-size: 0.9rem; display: none; color: #28a745;">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Glamorous.</div>
+            <p class="footer-text">Elevating your beauty with elegance and care.</p>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p fa-lg"></i></a>
+            </div>
+
+            <div class="copyright">
+                &copy; <span id="year"></span> Glamorous Salon & Spa. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Workers Sidebar -->
+    <div class="sidebar" id="workers-sidebar">
+        <div class="sidebar-header">
+            <h3>Workers & Attendance</h3>
+            <i class="fas fa-times close-sidebar" id="close-sidebar"></i>
+        </div>
+
+        <div id="workers-list">
+            <!-- Worker 1 -->
+            <div class="worker-card">
+                <h4>Sarah Jenkins</h4>
+                <p>Role: Hair Stylist</p>
+                <p>Status: <span style="color: green; font-weight: bold;">Present</span></p>
+            </div>
+            <!-- Worker 2 -->
+            <div class="worker-card">
+                <h4>Michael Chen</h4>
+                <p>Role: Skin Care Specialist</p>
+                <p>Status: <span style="color: green; font-weight: bold;">Present</span></p>
+            </div>
+        </div>
+
+        <div class="attendance-form">
+            <h4 style="margin-bottom: 1rem;">Update Attendance</h4>
+            <input type="text" id="worker-name" placeholder="Worker Name">
+            <select id="worker-role">
+                <option value="Hair Stylist">Hair Stylist</option>
+                <option value="Nail Technician">Nail Technician</option>
+                <option value="Skin Care Specialist">Skin Care Specialist</option>
+                <option value="Receptionist">Receptionist</option>
+            </select>
+            <select id="worker-status">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+                <option value="On Leave">On Leave</option>
+            </select>
+            <button id="add-worker-btn">Save Record</button>
+        </div>
+
+        <!-- Deals Button inside Workers Sidebar -->
+        <button class="deals-btn" id="open-deals-sidebar-btn">
+            <i class="fas fa-tags"></i> View Deals & Price List
+        </button>
+    </div>
+
+    <!-- Deals Price List Sidebar -->
+    <div class="deals-sidebar" id="deals-sidebar">
+        <div class="deals-sidebar-header">
+            <h3><i class="fas fa-tags" style="margin-right:8px;"></i>Price List</h3>
+            <i class="fas fa-times close-deals-sidebar" id="close-deals-sidebar"></i>
+        </div>
+        <div class="deals-body">
+            <p
+                style="font-family: var(--font-heading); font-size: 1.4rem; text-align: center; color: var(--clr-accent-dark); margin-bottom: 1.5rem; font-style: italic;">
+                Beauty Salon</p>
+
+            <!-- Make Up -->
+            <div class="price-section">
+                <div class="price-section-title">💄 Make Up</div>
+                <div class="price-row"><span>Cleanse, Make Up &amp; Lashes</span><span>$45</span></div>
+                <div class="price-row"><span>Cleanse &amp; Make Up</span><span>$35</span></div>
+                <div class="price-row"><span>Make Up Lessons</span><span>$60</span></div>
+            </div>
+
+            <!-- Eye Care -->
+            <div class="price-section">
+                <div class="price-section-title">👁 Eye Care</div>
+                <div class="price-row"><span>Eyebrow Wax &amp; Shape</span><span>$25</span></div>
+                <div class="price-row"><span>Eyebrow Tint</span><span>$35</span></div>
+                <div class="price-row"><span>Full Set of Lashes</span><span>$25</span></div>
+            </div>
+
+            <!-- Nail Services -->
+            <div class="price-section">
+                <div class="price-section-title">💅 Nail Services</div>
+                <div class="price-row"><span>Basic Manicure</span><span>$45</span></div>
+                <div class="price-row"><span>Luxury Manicure</span><span>$55</span></div>
+                <div class="price-row"><span>Basic Pedicure</span><span>$55</span></div>
+                <div class="price-row"><span>Gel Polish Manicure</span><span>$25</span></div>
+                <div class="price-row"><span>Luxury Gel Polish Manicure</span><span>$45</span></div>
+                <div class="price-row"><span>Luxury Gel Polish Pedicure</span><span>$55</span></div>
+            </div>
+
+            <!-- Hair Services -->
+            <div class="price-section">
+                <div class="price-section-title">✂️ Hair Services</div>
+                <div class="price-row"><span>Blow Dry</span><span>$35</span></div>
+                <div class="price-row"><span>Formal Hair Cut</span><span>$55</span></div>
+                <div class="price-row"><span>Men Hair Cut</span><span>$55</span></div>
+                <div class="price-row"><span>Haircut &amp; Style</span><span>$85</span></div>
+                <div class="price-row"><span>Hair Cut &amp; Blow Dry</span><span>$95</span></div>
+                <div class="price-row"><span>Root Color Touch Up</span><span>$55</span></div>
+            </div>
+
+            <!-- Skin Care -->
+            <div class="price-section">
+                <div class="price-section-title">🌿 Skin Care</div>
+                <div class="price-row"><span>Basic Facial</span><span>$65</span></div>
+                <div class="price-row"><span>Deep Cleanse Facial</span><span>$85</span></div>
+                <div class="price-row"><span>Anti-Aging Treatment</span><span>$95</span></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Customer Profile Modal -->
+    <div class="modal-overlay" id="profile-modal">
+        <div class="modal">
+            <h3>My Customer Profile</h3>
+            <p style="font-size: 0.9rem; color: var(--clr-text-light); margin-bottom: 1.5rem;">Create or update your
+                account details.</p>
+
+            <input type="text" id="profile-name" placeholder="Full Name">
+            <input type="email" id="profile-email" placeholder="Email Address">
+            <input type="tel" id="profile-phone" placeholder="Phone Number">
+            <select id="profile-preference"
+                style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border: 1px solid #ddd; border-radius: 4px; font-family: var(--font-body);">
+                <option value="" disabled selected>Preferred Service</option>
+                <option value="Hair Styling">Hair Styling</option>
+                <option value="Skin Care">Skin Care</option>
+                <option value="Nail Care">Nail Care</option>
+            </select>
+
+            <button id="save-profile-btn">Save Profile</button>
+
+            <!-- My Appointments Section -->
+            <div id="my-appointments-section" style="margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem; text-align: left; display: none;">
+                <h4 style="font-family: var(--font-heading); color: var(--clr-text-main); margin-bottom: 1rem;">My Appointments</h4>
+                <div id="my-appointments-list" style="max-height: 150px; overflow-y: auto; font-size: 0.85rem;"></div>
+            </div>
+
+            <div class="modal-close" id="close-profile-modal">Close</div>
+            <p id="profile-success-msg" style="color: #28a745; font-size: 0.85rem; margin-top: 1rem; display: none;">
+                Profile saved successfully!</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        const icon = mobileMenuBtn.querySelector('i');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Appointment Form Submission Logic
+        const form = document.getElementById('appointment-form');
+        const formMessage = document.getElementById('form-message');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Collect all field values
+            const name    = document.getElementById('name').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const service = document.getElementById('service').value;
+            const date    = document.getElementById('date').value;
+
+            // Build appointment object and save to localStorage
+            const appointment = {
+                id:        Date.now().toString(),
+                name:      name,
+                email:     email,
+                service:   service,
+                date:      date,
+                bookedAt:  new Date().toISOString(),
+                status:    'Pending'
+            };
+
+            const existing = JSON.parse(localStorage.getItem('glamorous_appointments') || '[]');
+            existing.push(appointment);
+            localStorage.setItem('glamorous_appointments', JSON.stringify(existing));
+
+            // Show success message
+            formMessage.style.display = 'block';
+            formMessage.textContent = `✓ Thank you, ${name}! Your appointment request has been received.`;
+            formMessage.style.color = 'green';
+
+            // Reset form
+            form.reset();
+
+            // Hide message after 4 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 4000);
+        });
+
+        // Workers Sidebar Logic
+        const workersBtn = document.getElementById('workers-btn');
+        const workersSidebar = document.getElementById('workers-sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
+
+        workersBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            workersSidebar.classList.add('open');
+        });
+
+        closeSidebar.addEventListener('click', () => {
+            workersSidebar.classList.remove('open');
+        });
+
+        // Deals Sidebar Logic
+        const openDealsSidebarBtn = document.getElementById('open-deals-sidebar-btn');
+        const dealsSidebar = document.getElementById('deals-sidebar');
+        const closeDealsSidebar = document.getElementById('close-deals-sidebar');
+
+        openDealsSidebarBtn.addEventListener('click', () => {
+            dealsSidebar.classList.add('open');
+        });
+
+        closeDealsSidebar.addEventListener('click', () => {
+            dealsSidebar.classList.remove('open');
+        });
+
+        // Add Attendance Logic
+        const addWorkerBtn = document.getElementById('add-worker-btn');
+        const workersList = document.getElementById('workers-list');
+
+        addWorkerBtn.addEventListener('click', () => {
+            const name = document.getElementById('worker-name').value;
+            const role = document.getElementById('worker-role').value;
+            const status = document.getElementById('worker-status').value;
+
+            if (name.trim() === '') {
+                alert('Please enter a worker name');
+                return;
+            }
+
+            const statusColor = status === 'Present' ? 'green' : (status === 'Absent' ? '#d9534f' : '#f0ad4e');
+
+            const workerHTML = `
+                <div class="worker-card">
+                    <h4>${name}</h4>
+                    <p>Role: ${role}</p>
+                    <p>Status: <span style="color: ${statusColor}; font-weight: bold;">${status}</span></p>
+                </div>
+            `;
+
+            // Append to list
+            workersList.insertAdjacentHTML('beforeend', workerHTML);
+
+            // Clear input
+            document.getElementById('worker-name').value = '';
+        });
+
+        // Profile Modal Logic
+        const profileBtn = document.getElementById('profile-btn');
+        const profileModal = document.getElementById('profile-modal');
+        const closeProfileModal = document.getElementById('close-profile-modal');
+        const saveProfileBtn = document.getElementById('save-profile-btn');
+        const profileSuccessMsg = document.getElementById('profile-success-msg');
+
+        // Load current profile on page load if exists
+        const currentUserEmail = localStorage.getItem('glamorous_current_email');
+        if (currentUserEmail) {
+            const allProfiles = JSON.parse(localStorage.getItem('glamorous_profiles') || '[]');
+            const p = allProfiles.find(x => x.email === currentUserEmail);
+            if (p) {
+                document.getElementById('profile-name').value = p.name || '';
+                document.getElementById('profile-email').value = p.email || '';
+                document.getElementById('profile-phone').value = p.phone || '';
+                document.getElementById('profile-preference').value = p.preference || '';
+                document.getElementById('profile-btn').innerHTML = `<i class="fas fa-user-check" style="margin-right:5px;"></i> ${p.name.split(' ')[0]}`;
+            }
+        }
+
+        function loadMyAppointments() {
+            const email = document.getElementById('profile-email').value.trim();
+            const section = document.getElementById('my-appointments-section');
+            const list = document.getElementById('my-appointments-list');
+            
+            if (!email) {
+                section.style.display = 'none';
+                return;
+            }
+
+            const appts = JSON.parse(localStorage.getItem('glamorous_appointments') || '[]');
+            const myAppts = appts.filter(a => a.email && a.email.toLowerCase() === email.toLowerCase());
+
+            if (myAppts.length === 0) {
+                section.style.display = 'block';
+                list.innerHTML = '<p style="color: var(--clr-text-light); font-style: italic;">No appointments found.</p>';
+            } else {
+                section.style.display = 'block';
+                list.innerHTML = myAppts.map(a => {
+                    let color = '#856404'; // pending
+                    let bg = '#FFF3CD';
+                    if (a.status === 'Confirmed') { color = '#0C5460'; bg = '#D1ECF1'; }
+                    if (a.status === 'Done') { color = '#155724'; bg = '#D4EDDA'; }
+
+                    const dateStr = a.date ? new Date(a.date+'T00:00:00').toLocaleDateString() : 'No date';
+                    
+                    return `
+                        <div style="background: #FAFAFA; border: 1px solid #eee; border-radius: 6px; padding: 0.8rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 700; color: var(--clr-text-main); margin-bottom: 0.2rem;">${a.service}</div>
+                                <div style="color: var(--clr-text-light); font-size: 0.8rem;"><i class="fas fa-calendar-day"></i> ${dateStr}</div>
+                            </div>
+                            <div style="background: ${bg}; color: ${color}; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 700; font-size: 0.75rem;">
+                                ${a.status}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        profileBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadMyAppointments();
+            profileModal.style.display = 'flex';
+        });
+
+        closeProfileModal.addEventListener('click', () => {
+            profileModal.style.display = 'none';
+            profileSuccessMsg.style.display = 'none';
+        });
+
+        saveProfileBtn.addEventListener('click', () => {
+            const name = document.getElementById('profile-name').value.trim();
+            const email = document.getElementById('profile-email').value.trim();
+            const phone = document.getElementById('profile-phone').value.trim();
+            const preference = document.getElementById('profile-preference').value;
+
+            if (name === '') {
+                alert('Please enter at least your name.');
+                return;
+            }
+
+            // Build profile object
+            const newProfile = {
+                id: Date.now().toString(),
+                name: name,
+                email: email,
+                phone: phone,
+                preference: preference || 'Not specified',
+                date: new Date().toISOString()
+            };
+
+            // Save to localStorage
+            const existing = JSON.parse(localStorage.getItem('glamorous_profiles') || '[]');
+            existing.push(newProfile);
+            localStorage.setItem('glamorous_profiles', JSON.stringify(existing));
+            localStorage.setItem('glamorous_current_email', email);
+
+            loadMyAppointments();
+
+            // Update profile button to show name
+            document.getElementById('profile-btn').innerHTML =
+                `<i class="fas fa-user-check" style="margin-right:5px;"></i> ${name.split(' ')[0]}`;
+
+            profileSuccessMsg.textContent = `\u2713 Profile saved! Visible in Admin Panel.`;
+            profileSuccessMsg.style.display = 'block';
+            setTimeout(() => {
+                profileModal.style.display = 'none';
+                profileSuccessMsg.style.display = 'none';
+            }, 2500);
+        });
+
+        // Site Access Login Logic
+        const siteLoginOverlay = document.getElementById('site-login-overlay');
+        const siteLoginBtn = document.getElementById('site-login-btn');
+        const siteUsernameInput = document.getElementById('site-username');
+        const sitePasswordInput = document.getElementById('site-password');
+        const siteLoginError = document.getElementById('site-login-error');
+
+        // Prevent body scrolling while overlay is active
+        document.body.style.overflow = 'hidden';
+
+        siteLoginBtn.addEventListener('click', () => {
+            const user = siteUsernameInput.value.trim();
+            const pass = sitePasswordInput.value.trim();
+
+            if (user !== '' && pass !== '') {
+                siteLoginOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    siteLoginOverlay.style.display = 'none';
+                    document.body.style.overflow = 'auto'; // Restore scrolling
+                }, 500);
+            } else {
+                siteLoginError.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Salon - Login</title>
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+        /* CSS Variables - Beige Theme */
+        :root {
+            --clr-bg-main: #FAFAFA;
+            --clr-bg-sec: #F5EFEB;
+            --clr-accent: #C2A892;
+            --clr-accent-dark: #A38671;
+            --clr-text-main: #332C27;
+            --clr-text-light: #665D56;
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--clr-bg-sec);
+            color: var(--clr-text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: linear-gradient(135deg, #FAFAFA 0%, #F5EFEB 100%);
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 3rem 4rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-logo {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--clr-accent-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: var(--clr-text-light);
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--clr-text-light);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #EBEBEB;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background-color: #FAFAFA;
+            color: var(--clr-text-main);
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--clr-accent);
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(194, 168, 146, 0.15);
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: var(--clr-accent-dark);
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: var(--transition);
+            margin-top: 1rem;
+            font-weight: 700;
+        }
+
+        .login-btn:hover {
+            background-color: var(--clr-text-main);
+            transform: translateY(-2px);
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="login-logo">Aura.</div>
+        <div class="login-subtitle">Salon & Spa Access</div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            
+            <button type="submit" class="login-btn">Enter Site</button>
+            <div class="error-message" id="errorMessage">Invalid username or password.</div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // Simple hardcoded authentication
+            // For demonstration purposes
+            if (user.toLowerCase() === 'admin' && pass === 'salon123') {
+                // Redirect to the salon website
+                window.location.href = 'fjj.html';
+            } else {
+                errorMessage.style.display = 'block';
+                // Shake effect for error
+                const container = document.querySelector('.login-container');
+                container.style.animation = 'none';
+                container.offsetHeight; /* trigger reflow */
+                container.style.animation = 'shake 0.4s ease';
+            }
+        });
+
+        // Add shake animation dynamically
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-10px); }
+                50% { transform: translateX(10px); }
+                75% { transform: translateX(-10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
